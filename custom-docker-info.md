@@ -20,6 +20,7 @@ Note2: Path to cluster doesn't include the Workspace name, only Billing account 
 
 B. Json file: 
 
+```json
 {
   "machineConfig": {
     "masterMachineType": "n1-standard-1",
@@ -49,6 +50,7 @@ B. Json file:
     "https://www.googleapis.com/auth/userinfo.profile"
   ]
 }
+```
 
 Note: The image name should be equivalent to what you would put after a docker pull command. 
 Scanpy/Seurat and other packages commonly used in the Regev Lab are present in the image that is loaded if "<image-name>" is "gokceneraslan/regevlab-jupyter-docker" Link here
@@ -57,7 +59,9 @@ Note2: "machineConfig" can be modified to request specific configurations of the
 
 2. To check status of a cluster/ delete - Curl 
 
+```bash
 curl -X GET -H "Authorization:Bearer $(gcloud auth print-access-token)" 'https://notebooks.firecloud.org/api/cluster/<billing-account>/<name-used-when-starting>' 
+```
 
 Note: path to the cluster here does NOT include /v2/
 Note2: to force deletion of the cluster, same curl command as to check the status but with -X DELETE instead of -X GET. More documentation in this Swagger page. 
